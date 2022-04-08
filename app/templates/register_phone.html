@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Register New Phone</h1>
+
+{{ form }}
+
+ <form method="post">
+
+    {{ form.csrf_token }}
+    <div class="form group w-50">
+        {{ form.first_name.label }}
+        {{ form.first_name(class='form-control', placeholder='First Name') }}
+
+        {{ form.last_name.label }}
+        {{ form.last_name(class='form-control', placeholder='Last Name') }}
+
+        {{ form.phone_number.label }}
+        {{ form.phone_number(class='form-control', placeholder='Phone Number') }}
+
+        {{ form.city.label }}
+        {{ form.city(class='form-control', placeholder='City') }}
+
+        {{ form.submit(class= 'btn btn-primary w-100') }}
+    </div>
+
+ </form> 
+
+{% for p in phones %}
+<div class="card">
+    <div class="card body">
+        {{p}}
+    </div>
+</div>
+{% endfor %}
+
+{% endblock content %}
+
+<!-- <div class="card">
+    <div class="card body">
+        {{p}}
+    </div>
+</div> -->
+
+
+<!-- <div class="card">
+         <div class="card-body">
+             <h5 class="card-title">{{ p.first_name }}</h5>
+             <p class="card-text">{{p.last_name }}</p>
+             <p class="card-text">{{p.phone_number }}</p>
+             <p class="card-text">{{p.city}}</p>
+        <a href="" class="btn btn-primary">More Info</a>
+        </div>
+    </div> -->
