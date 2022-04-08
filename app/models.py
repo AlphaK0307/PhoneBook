@@ -1,3 +1,4 @@
+from sqlalchemy import ForeignKey
 from app import db, login
 from flask_login import UserMixin
 from datetime import datetime
@@ -14,6 +15,7 @@ class User(db.Model, UserMixin):
     password= db.Column (db.String(256), nullable=False)
     date_created = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     posts = db.relationship('Post', backref='author', lazy='dynamic')
+    phones = db.relationship('Phone', backref='user', lazy='dynamic')
 
 
     def __init__(self, **kwargs):
@@ -48,7 +50,7 @@ class Phone(db.Model):
     phone_number=db.Column(db.String(100), nullable=False)
     city=db.Column(db.String(15), nullable=False)
     date_created= db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
-
+    user_id= db.Column(db.Integer, db.ForeignKey('user.id'))
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         db.session.add(self)
