@@ -65,7 +65,7 @@ def register_phone():
         last_name=form.last_name.data
         phone_number=form.phone_number.data
         city=form.city.data
-        Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city)
+        Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city, user_id = current_user.id)
         flash(f'New PhoneNumber Entry has been made for {first_name}', 'primary')
         return redirect(url_for('index'))
     return render_template('register_phone.html', title=title, form=form)

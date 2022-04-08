@@ -1,29 +1,22 @@
 {% extends 'base.html' %}
 
 {%block content%}
-
     <h1>My Phonebook</h1>
+    <div class="row">
 
-
-    {% if current_user.is_authenticated %}
-    <h1>Hello {{ current_user.username }}</h1>
-    {% else %}
-    <h1>Hello Please sign up to use our Phonebook</h1>
-    {% endif %}
-     
-    {% if current_user.is_authenticated%}
-
-    {% for p in phones %}
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">{{ p.first_name }} {{p.last_name }}</h5>
-            <p class="card-text">{{p.phone_number }}</p>
-            <p class="card-text">{{p.city}}</p>
-       <a href="" class="btn btn-success">Edit</a>
-       <a href="" class="btn btn-danger">Delete</a>
-       </div>
+        {% for p in phones %}
+        <div class="col-12 col-md-4">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">{{ p.first_name }} {{p.last_name }}</h5>
+                    <p class="card-text">{{p.phone_number }}</p>
+                    <p class="card-text">{{p.city}}</p>
+               <a href="" class="btn btn-success">Edit</a>
+               <a href="" class="btn btn-danger">Delete</a>
+               </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-    {% endif %}
 
 {%endblock content%}
