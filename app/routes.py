@@ -9,8 +9,8 @@ from app.models import User, Post, Phone
 @app.route('/')
 def index():
     title='Home'
-    posts = Post.query.all()
-    return render_template('index.html', title=title, posts=posts)
+    phones=Phone.query.all()
+    return render_template('index.html', title=title, phones=phones)
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -68,7 +68,7 @@ def register_phone():
         Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city)
         flash(f'New PhoneNumber Entry has been made for {first_name}', 'primary')
         return redirect(url_for('index'))
-    return render_template('register_phone.html', title=title, form=form, phones=phones)
+    return render_template('register_phone.html', title=title, form=form)
 
 
 @app.route('/logout')
@@ -76,3 +76,10 @@ def logout():
     logout_user()
     flash(f'You have logged out', 'primary')
     return redirect(url_for('index'))
+
+@app.route('/my-phones')
+@login_required
+def my_phones():
+    title = 'My Phone Numbers'
+    phones = current_user.phones.all()
+    return render_template('my_phones.html', title=title, phones=phones)

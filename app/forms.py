@@ -12,15 +12,15 @@ class SignUpForm(FlaskForm):
     submit= SubmitField('SignUp')
 
 
+class LoginForm(FlaskForm):
+    username= StringField('Username', validators=[DataRequired()])
+    password= PasswordField('Password', validators=[DataRequired()])
+    submit= SubmitField('Log In')
+
+
 class RegisterePhoneForm(FlaskForm):
     first_name= StringField('First Name', validators=[DataRequired()])
     last_name= StringField('Last Name', validators=[DataRequired()])
     phone_number= StringField('Phone Number', validators=[DataRequired()])
     city= StringField('City', validators=[DataRequired()])
     submit= SubmitField('Register')
-
-
-class LoginForm(FlaskForm):
-    username= StringField('Username', validators=[DataRequired()])
-    password= PasswordField('Password', validators=[DataRequired()])
-    submit= SubmitField('Log In')
