@@ -3,7 +3,7 @@ from crypt import methods
 from app import app
 from flask import redirect, render_template, url_for, flash
 from flask_login import login_required, login_user, logout_user, current_user
-from app.forms import SignUpForm, RegisterePhoneForm, LoginForm
+from app.forms import SignUpForm, RegisterePhoneForm, LoginForm, SearchForm
 from app.models import User, Post, Phone
 
 @app.route('/')
@@ -83,3 +83,11 @@ def my_phones():
     title = 'My Phone Numbers'
     phones = current_user.phones.all()
     return render_template('my_phones.html', title=title, phones=phones)
+
+@app.route('/search-phones', methods=['GET', 'POST'])
+def search_phones():
+    title='Search'
+    form= SearchForm()
+    phones= []
+    return render_template('search_phones.html', title=title, phones=phones, form=form)
+

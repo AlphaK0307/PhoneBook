@@ -17,7 +17,7 @@
     <nav class="nav bg-dark d-flex justify-content-around">
         <a href="{{ url_for('index') }}" class="link-light">Home</a>
 
-        <a href="" class="link-light">Search Posts</a>
+        <a href="{{ url_for('search_phones') }}" class="link-light">Search Phone Number</a>
         {% if current_user.is_authenticated%}
         <a href="{{ url_for('register_phone') }}" class="link-light">Register Phone Number</a>
         <a href="{{ url_for('my_phones') }}" class="link-light">My Phonebook</a>
