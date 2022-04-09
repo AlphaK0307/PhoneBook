@@ -12,7 +12,21 @@
     </div>
 </form>
 
-{{ phones }}
+<div class="row">
+
+    {% for p in phones %}
+    <div class="col-12 col-md-4">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{ p.first_name }} {{p.last_name }}</h5>
+                <p class="card-text">{{p.phone_number }}</p>
+                <p class="card-text">{{p.city}}</p>
+                <a href="#" class="btn btn-success">More Info</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
 
 {%endblock content%}

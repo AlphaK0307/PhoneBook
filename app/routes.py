@@ -89,5 +89,8 @@ def search_phones():
     title='Search'
     form= SearchForm()
     phones= []
+    if form.validate_on_submit():
+        term = form.search.data
+        phones = Phone.query.filter((Phone.first_name.ilike(f'%{term}%')) | (Phone.last_name.ilike(f'%{term}%'))).all()
     return render_template('search_phones.html', title=title, phones=phones, form=form)
 
