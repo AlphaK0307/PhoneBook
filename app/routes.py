@@ -94,3 +94,21 @@ def search_phones():
         phones = Phone.query.filter((Phone.first_name.ilike(f'%{term}%')) | (Phone.last_name.ilike(f'%{term}%'))).all()
     return render_template('search_phones.html', title=title, phones=phones, form=form)
 
+
+# # Edit Phone
+# @app.route('/edit-phone/<phone_id>')
+# def edit_phone(phone_id):
+#     phones= Phone.query.get_or_404(phone_id)
+#     first_name = f"Edit {phones.first_name}"
+#     return render_template('my_phones.html', first_name=first_name, phones=phones)
+
+# @app.route('/delete-phone/<phone_id>')
+# @login_required
+# def delete_phone(phone_id):
+#     phone = Phone.query.get_or_404(phone_id)
+#     if phone.author != current_user:
+#         flash('You Do not have access to delete this.', 'danger')
+#     else:
+#         phone.delete()
+#         flash(f'Contact deleted.', 'success')
+#     return redirect(url_for('my_phones'))

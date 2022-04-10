@@ -1,3 +1,4 @@
+from requests import delete
 from sqlalchemy import ForeignKey
 from app import db, login
 from flask_login import UserMixin
@@ -67,4 +68,13 @@ class Phone(db.Model):
         City:{self.city}
         """
 
+    # def update(self, **kwargs):
+    #     for key, value in kwargs.items():
+    #         if key in {'title', 'body'}:
+    #             setattr(self, key, value)
+    #     db.session.commit()
+
+    # def delete(self):
+    #     db.session.delete(self)
+    #     db.session.commit()
   
