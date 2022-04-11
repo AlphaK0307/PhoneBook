@@ -4,9 +4,7 @@
 
 <h1>Register New Phone</h1>
 
-{{ form }}
-
- <form method="post">
+ <form method="post" enctype="multipart/form-data" >
 
     {{ form.csrf_token }}
     <div class="form group w-50">
@@ -21,6 +19,8 @@
 
         {{ form.city.label }}
         {{ form.city(class='form-control', placeholder='City') }}
+
+        {{ form.image }}
 
         {{ form.submit(class= 'btn btn-primary w-100') }}
     </div>

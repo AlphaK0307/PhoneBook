@@ -1,7 +1,8 @@
 # import email
 from ast import Pass
+from email.mime import image
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import DataRequired, Email, EqualTo
 
 class SignUpForm(FlaskForm):
@@ -23,6 +24,7 @@ class RegisterePhoneForm(FlaskForm):
     last_name= StringField('Last Name', validators=[DataRequired()])
     phone_number= StringField('Phone Number', validators=[DataRequired()])
     city= StringField('City', validators=[DataRequired()])
+    image=FileField('Image')
     submit= SubmitField('Register')
 
 class SearchForm(FlaskForm):

@@ -65,7 +65,8 @@ def register_phone():
         last_name=form.last_name.data
         phone_number=form.phone_number.data
         city=form.city.data
-        Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city, user_id = current_user.id)
+        image= form.image.data
+        Phone(first_name=first_name, last_name=last_name, phone_number=phone_number, city=city, user_id = current_user.id, image=image)
         flash(f'New PhoneNumber Entry has been made for {first_name}', 'primary')
         return redirect(url_for('index'))
     return render_template('register_phone.html', title=title, form=form)
@@ -95,12 +96,12 @@ def search_phones():
     return render_template('search_phones.html', title=title, phones=phones, form=form)
 
 
-# # Edit Phone
-# @app.route('/edit-phone/<phone_id>')
-# def edit_phone(phone_id):
-#     phones= Phone.query.get_or_404(phone_id)
-#     first_name = f"Edit {phones.first_name}"
-#     return render_template('my_phones.html', first_name=first_name, phones=phones)
+# Edit Phone
+@app.route('/edit-phone/<phone_id>')
+def edit_phone(phone_id):
+    phone= Phone.query.get_or_404(phone_id)
+    first_name = f"Edit {phone.first_name}"
+    return render_template('my_phones.html', first_name=first_name, p=phone)
 
 # @app.route('/delete-phone/<phone_id>')
 # @login_required
